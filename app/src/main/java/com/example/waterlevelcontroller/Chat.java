@@ -16,12 +16,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.ViewFlipper;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import me.aflak.bluetooth.Bluetooth;
 
 public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCallback {
+    private ViewFlipper viewFlipper;
     private String name;
     private Bluetooth b;
     private Button btnOn,btnOff;
@@ -33,7 +35,7 @@ public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCa
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
-
+        viewFlipper= findViewById(R.id.view_flipper);
         text = findViewById(R.id.text);
         btnOn =  findViewById(R.id.btnOn);
         btnOff = findViewById(R.id.btnOff);
@@ -78,6 +80,10 @@ public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCa
     }
 
 
+    public void nextView(View v){
+        viewFlipper.showNext();
+    }
+
 
     @Override
     public void onDestroy() {
@@ -98,6 +104,7 @@ public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCa
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
+        boolean isClicked ;
         switch (item.getItemId()) {
             case R.id.close:
                 b.removeCommunicationCallback();
@@ -105,11 +112,6 @@ public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCa
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
                 finish();
-                return true;
-
-            case R.id.goToSelect:
-                Intent i = new Intent(this, MainActivity.class);
-                startActivity(i);
                 return true;
 
             default:
@@ -152,6 +154,8 @@ public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCa
     public void onMessage(String message) {
 
         Display(name+": "+message);
+        
+
     }
 
     @Override

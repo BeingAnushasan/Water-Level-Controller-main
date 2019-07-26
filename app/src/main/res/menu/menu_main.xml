@@ -3,9 +3,9 @@
 
 
 
-    <item android:id="@+id/goToSelect"
-        android:title="Back To Main"/>
+    <!--<item android:id="@+id/ShowLevelUI"-->
+        <!--android:title="Show Level UI"/>-->
     <item android:id="@+id/close"
         android:title="Close Connection"/>
-
+    
 </menu>
