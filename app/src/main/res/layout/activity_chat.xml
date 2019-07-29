@@ -38,7 +38,7 @@
 
 
         <ImageView
-            android:id="@+id/waterLevel"
+            android:id="@+id/levelViewer"
             android:layout_width="400dp"
             android:layout_height="400dp"
             android:layout_marginBottom="50dp"
@@ -50,7 +50,7 @@
         <Button
             android:id="@+id/btnOn"
             android:text="Turn On"
-            android:layout_below="@id/waterLevel"
+            android:layout_below="@id/levelViewer"
             android:layout_marginTop="5dp"
             android:background="@drawable/half_blue_roundshape"
             android:layout_width="match_parent"

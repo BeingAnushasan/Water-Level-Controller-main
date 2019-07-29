@@ -6,6 +6,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.method.ScrollingMovementMethod;
@@ -14,6 +15,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
@@ -31,6 +33,12 @@ public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCa
     private ScrollView scrollView;
     private boolean registered=false;
 
+    AnimationDrawable chargingAnimation;
+
+    private ImageView levelViewer;
+    private  TextView textRexeived;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,8 +50,14 @@ public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCa
         scrollView =  findViewById(R.id.scrollView);
 
         text.setMovementMethod(new ScrollingMovementMethod());
-        btnOn.setEnabled(false);
+        btnOn.setEnabled(true);
         btnOff.setEnabled(false);
+
+        levelViewer = findViewById(R.id.levelViewer);
+        textRexeived = findViewById(R.id.txtReceived);
+
+        levelViewer.setBackgroundResource(R.drawable.charging_animation);
+       chargingAnimation= (AnimationDrawable) levelViewer.getBackground();
 
         b = new Bluetooth(this);
         b.enableBluetooth();
@@ -60,8 +74,12 @@ public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCa
             @Override
             public void onClick(View v) {
                 String msg = "a";
-                b.send(msg);
+              //  b.send(msg);
                 Display("You: "+msg);
+
+                chargingAnimation.start();
+
+
             }
         });
 
@@ -154,7 +172,10 @@ public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCa
     public void onMessage(String message) {
 
         Display(name+": "+message);
-        
+        textRexeived.setText(message);
+
+
+
 
     }
 
