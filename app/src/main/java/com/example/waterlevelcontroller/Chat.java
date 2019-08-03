@@ -51,13 +51,13 @@ public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCa
 
         text.setMovementMethod(new ScrollingMovementMethod());
         btnOn.setEnabled(true);
-        btnOff.setEnabled(false);
+        btnOff.setEnabled(true);
 
         levelViewer = findViewById(R.id.levelViewer);
-        textRexeived = findViewById(R.id.txtReceived);
 
-        levelViewer.setBackgroundResource(R.drawable.charging_animation);
-       chargingAnimation= (AnimationDrawable) levelViewer.getBackground();
+
+        //levelViewer.setBackgroundResource(R.drawable.charging_animation);
+       //chargingAnimation= (AnimationDrawable) levelViewer.getBackground();
 
         b = new Bluetooth(this);
         b.enableBluetooth();
@@ -74,10 +74,10 @@ public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCa
             @Override
             public void onClick(View v) {
                 String msg = "a";
-              //  b.send(msg);
+                b.send(msg);
                 Display("You: "+msg);
 
-                chargingAnimation.start();
+                //chargingAnimation.start();
 
 
             }
@@ -86,7 +86,7 @@ public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCa
         btnOff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String msg = "d";
+                String msg = "b";
                 b.send(msg);
                 Display("You: "+msg);
             }
@@ -155,8 +155,8 @@ public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCa
         this.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                btnOn.setEnabled(true);
-                btnOff.setEnabled(true);
+//                btnOn.setEnabled(true);
+//                btnOff.setEnabled(true);
             }
         });
     }
@@ -172,12 +172,54 @@ public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCa
     public void onMessage(String message) {
 
         Display(name+": "+message);
-        textRexeived.setText(message);
-
-
-
+//        try {
+////            //set time in mili
+////            Thread.sleep(5000);
+////
+////        }catch (Exception e){
+////            e.printStackTrace();
+////        }
+       levelViewDeciding(message);
 
     }
+
+    private void levelViewDeciding(String message) {
+
+        int msg = Integer.parseInt(message);
+
+        if(msg<20){
+          levelViewer.setImageResource(R.drawable.battery_20);
+         Display("Water level less than 20% ");
+        }
+       else if(msg>1 && msg<=20){
+            levelViewer.setImageResource(R.drawable.battery_20);
+            Display("Water level about 20% ");
+        }
+        else if(msg>20 && msg<=40){
+            levelViewer.setImageResource(R.drawable.battery_30);
+            Display("Water level is about 30% ");
+        }
+      else if(msg>40 && msg<=60){
+            levelViewer.setImageResource(R.drawable.battery_50);
+            Display("Water level is  50% ");
+        }
+        else if(msg>60 && msg<=80){
+            levelViewer.setImageResource(R.drawable.battery_60);
+            Display("Water level is 60%");
+        }
+        else if(msg>90 && msg<=100){
+            levelViewer.setImageResource(R.drawable.battery_100);
+            Display("Water level is 90% ");
+        }
+
+        else if(msg>80 && msg<=90){
+            levelViewer.setImageResource(R.drawable.battery_90);
+            Display("Water level is 100% ");
+        }
+
+    }
+
+
 
     @Override
     public void onError(String message) {
