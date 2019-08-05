@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">WaterLevel Controller</string>
-    <string name="title_activity_chat">Chat</string>
+    <string name="title_activity_chat">Interaction</string>
+    <string name="textInfo">Water Level is Unknown</string>
 </resources>

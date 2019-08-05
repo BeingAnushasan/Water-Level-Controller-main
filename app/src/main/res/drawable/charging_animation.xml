@@ -1,10 +1,14 @@
 <animation-list xmlns:android="http://schemas.android.com/apk/res/android"
     android:oneshot="false">
-    <item android:drawable="@drawable/battery_charging_20" android:duration="200" />
-    <item android:drawable="@drawable/battery_charging_30" android:duration="200" />
-    <item android:drawable="@drawable/battery_charging_50" android:duration="200" />
-    <item android:drawable="@drawable/battery_charging_60" android:duration="200" />
-    <item android:drawable="@drawable/battery_charging_80" android:duration="200" />
-    <item android:drawable="@drawable/battery_charging_90" android:duration="200" />
-    <item android:drawable="@drawable/battery_charging_100" android:duration="200" />
+    <item android:drawable="@drawable/level_10" android:duration="200" />
+    <item android:drawable="@drawable/level_20" android:duration="200" />
+    <item android:drawable="@drawable/level_30" android:duration="200" />
+    <item android:drawable="@drawable/level_40" android:duration="200" />
+    <item android:drawable="@drawable/level_50" android:duration="200" />
+    <item android:drawable="@drawable/level_60" android:duration="200" />
+    <item android:drawable="@drawable/level_70" android:duration="200" />
+    <item android:drawable="@drawable/level_80" android:duration="200" />
+    <item android:drawable="@drawable/level_90" android:duration="200" />
+    <item android:drawable="@drawable/level_100" android:duration="200" />
+
 </animation-list>

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/my_bg">
 
     <ProgressBar
         android:id="@+id/scan_progress"
@@ -25,7 +26,7 @@
     <ListView
         android:id="@+id/scan_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/scan_progress"
         android:layout_above="@+id/scan_scan_again" />
 
@@ -34,7 +35,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Scan again"
+        android:background="@drawable/half_blue_roundshape"
         android:layout_alignParentBottom="true"
-        android:layout_alignEnd="@+id/scan_state" />
+        android:layout_alignEnd="@+id/scan_state"
+        android:layout_marginBottom="50dp"
+        android:layout_marginTop="5dp"
+        />
 
 </RelativeLayout>
